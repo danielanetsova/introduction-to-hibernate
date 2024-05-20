@@ -14,6 +14,7 @@ public class ChangeCasing {
         entityManager.getTransaction().begin();
 
         List<Town> allTowns = entityManager.createQuery("FROM Town", Town.class).getResultList();
+        
         for (Town town : allTowns) {
             String townName = town.getName();
 
@@ -21,8 +22,6 @@ public class ChangeCasing {
                 entityManager.detach(town);
             } else {
                 town.setName(townName.toUpperCase());
-//              ****  entityManager.flush(); не е необходимо да се пише тъй като commit-a накрая ще въведе промените
-//                пише се когато искаме да се запазят промените преди да кажем commit
             }
         }
         entityManager.getTransaction().commit();
