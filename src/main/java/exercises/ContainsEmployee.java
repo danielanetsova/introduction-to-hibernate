@@ -27,36 +27,24 @@ public class ContainsEmployee {
         em.getTransaction().commit();
         System.out.println(output);
 
-// РЕШЕНИЕ НА ПЕРПОДАВАТЕЛЯ
-//        try {
-//
-//            Employee employee = em.createQuery("FROM Employee WHERE CONCAT(first_name, last_name) = :fullName",
-//                    Employee.class).setParameter("fullName", inputName).getSingleResult();
-//            em.getTransaction().commit();
-//            System.out.println("Yes");
-//        } catch (Exception e) {
-//            System.out.println("No");
-//        }
+       List<Employee> employees = em.createQuery("FROM Employee", Employee.class).getResultList();
+       String output = "";
 
-//        Моето решение -> аз проверявам и второто име
-//        List<Employee> employees = em.createQuery("FROM Employee", Employee.class).getResultList();
-//        String output = "";
-//
-//        for (Employee employee : employees) {
-//            String firstAndSecondName = employee.getFirstName() + employee.getMiddleName();
-//            String firstAndLastName = employee.getFirstName() + employee.getLastName();
-//
-//            if (inputName.equals(firstAndSecondName) || inputName.equals(firstAndLastName)) {
-//                output = "Yes";
-//                break;
-//            }
-//        }
-//
-//        if (output.equals("")) {
-//            output = "No";
-//        }
-//
-//        System.out.println(output);
+       for (Employee employee : employees) {
+           String firstAndSecondName = employee.getFirstName() + employee.getMiddleName();
+           String firstAndLastName = employee.getFirstName() + employee.getLastName();
+
+           if (inputName.equals(firstAndSecondName) || inputName.equals(firstAndLastName)) {
+               output = "Yes";
+               break;
+           }
+       }
+
+       if (output.equals("")) {
+           output = "No";
+       }
+
+       System.out.println(output);
 
         em.close();
         scanner.close();
