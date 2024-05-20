@@ -32,11 +32,5 @@ public class RemoveTowns {
         } finally {
             em.close();
         }
-
-        //String selectQuery = "SELECT m FROM Mother m WHERE some_condition";
-        //List<Mother> mothersToRemove = entityManager
-        //    .createQuery(selectQuery)
-        //    .getResultStream()
-        //    .forEach(em::remove);
     }
 }
