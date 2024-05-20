@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 public class EmployeesFromDepartment {
     public static void main(String[] args) {
         EntityManager em = HelperClass.createEntityManager();
-//        em.getTransaction().begin(); // не е необходимо писането му при SELECT заявки
+//        em.getTransaction().begin(); 
 
         em.createQuery("FROM Employee" +
                         " WHERE department.name = 'Research and Development'" +
